@@ -25,6 +25,12 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "986fb8c5-f9de-4e0b-a407-8aaae3c6fe73"
+      }
+    },
+    "owner": "asimersel"
   }
 }
