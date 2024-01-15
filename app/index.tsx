@@ -1,16 +1,12 @@
-import { useState } from 'react';
 import { FlatList, View } from 'react-native';
-import { IGoal } from '../src/models/Goal';
 import { testGoals } from '../src/constants/Goal';
-import Goal from './goals/[goal]';
+import Goal from './[goalCard]';
 
 export default function Goals() {
-  const [filteredGoals, setFilteredGoals] = useState<IGoal[]>(testGoals);
-
   return (
     <View>
       <FlatList
-        data={filteredGoals}
+        data={testGoals}
         renderItem={({ item }) => <Goal {...item} />}
       ></FlatList>
     </View>
