@@ -22,3 +22,9 @@ export interface IGoal {
   minOrMax: string;
   current: number;
 }
+
+export type GenericEnumPickerProps<T> = {
+  enum: T;
+  initialValue: T[keyof T];
+  title: string;
+};
