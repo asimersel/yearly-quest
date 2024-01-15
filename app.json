@@ -2,6 +2,7 @@
   "expo": {
     "name": "yearly-quest",
     "slug": "yearly-quest",
+    "scheme": "yearly-quest-scheme",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,9 +12,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
@@ -31,6 +30,7 @@
         "projectId": "986fb8c5-f9de-4e0b-a407-8aaae3c6fe73"
       }
     },
-    "owner": "asimersel"
+    "owner": "asimersel",
+    "plugins": ["expo-router"]
   }
 }
