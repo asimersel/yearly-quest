@@ -1,6 +1,6 @@
 export enum GoalCategory {
   health = 'Health',
-  personalDev = 'PersonalDev',
+  personalDev = 'Personal Development',
   financial = 'Financial',
   career = 'Career',
 }
@@ -8,7 +8,7 @@ export enum GoalCategory {
 export enum CadenceOptions {
   daily = 'Daily',
   weekdays = 'Weekdays',
-  threeTimesPerWeek = 'ThreeTimesPerWeek',
+  threeTimesPerWeek = 'Three Times Per Week',
   weekly = 'Weekly',
   biweekly = 'Biweekly',
   montly = 'Montly',

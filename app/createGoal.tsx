@@ -1,24 +1,26 @@
 import { View, StyleSheet } from 'react-native';
+import DropdownMenu from './componens/DropdownMenu';
+import MyTextInput from './componens/MyTextInput';
+import MyButton from './componens/MyButton';
 import { CadenceOptions, GoalCategory } from '../src/models/Goal';
-import GlobalStyle from '../src/utils/GlobalStyle';
-import DropDown from './componens/dropdown';
-import { TextInput } from 'react-native-gesture-handler';
-import { Picker } from '@react-native-picker/picker';
 
 const CreateGoal = () => {
   return (
     <View style={styles.body}>
-      {/* <TextInput /> */}
-      <DropDown
+      <View style={{ marginHorizontal: 20, marginTop: 20 }}>
+        <MyTextInput label="Goal"></MyTextInput>
+      </View>
+      <DropdownMenu
         enum={GoalCategory}
         initialValue={GoalCategory.health}
         title={'Category'}
       />
-      <DropDown
+      <DropdownMenu
         enum={CadenceOptions}
         initialValue={CadenceOptions.biweekly}
         title={'Cadence'}
       />
+      <MyButton />
     </View>
   );
 };
@@ -26,9 +28,7 @@ const CreateGoal = () => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    // backgroundColor: GlobalStyle.colors.lightBg,
+    justifyContent: 'space-evenly',
   },
 });
 
