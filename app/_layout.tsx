@@ -2,6 +2,7 @@ import { Stack, router } from 'expo-router';
 import { TouchableOpacity, StyleSheet } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import GlobalStyle from '../src/utils/GlobalStyle';
+import { Provider as PaperProvider } from 'react-native-paper';
 
 function CreateButton() {
   return (
@@ -18,27 +19,29 @@ function CreateButton() {
 
 const RootLayout = () => {
   return (
-    <Stack>
-      <Stack.Screen
-        name="index"
-        options={{
-          headerTitle: 'Home',
-          headerRight: () => <CreateButton />,
-        }}
-      ></Stack.Screen>
-      <Stack.Screen
-        name="goals/[id]"
-        options={{
-          headerTitle: 'Goal',
-        }}
-      ></Stack.Screen>
-      <Stack.Screen
-        name="createGoal"
-        options={{
-          headerTitle: 'Add Goal',
-        }}
-      ></Stack.Screen>
-    </Stack>
+    <PaperProvider>
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{
+            headerTitle: 'Home',
+            headerRight: () => <CreateButton />,
+          }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="goals/[id]"
+          options={{
+            headerTitle: 'Goal',
+          }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="createGoal"
+          options={{
+            headerTitle: 'Add Goal',
+          }}
+        ></Stack.Screen>
+      </Stack>
+    </PaperProvider>
   );
 };
 const styles = StyleSheet.create({
