@@ -1,33 +1,90 @@
 import { View, StyleSheet } from 'react-native';
-import DropdownMenu from './componens/DropdownMenu';
+import MyMenu from './componens/MyMenu';
 import MyTextInput from './componens/MyTextInput';
 import MyButton from './componens/MyButton';
-import { CadenceOptions, GoalCategory } from '../src/models/Goal';
+import {
+  CadenceOptions,
+  GoalCategory,
+  IGoal,
+  GoalAdjustmentOptions,
+} from '../src/models/Goal';
+import { useState } from 'react';
+import { testGoals } from '../src/constants/Goal';
+import { useNavigation } from '@react-navigation/native';
 
 const CreateGoal = () => {
+  const navigation = useNavigation();
+  const [goal, setGoal] = useState('');
+  const [category, setCategory] = useState('');
+  const [cadence, setCadence] = useState('');
+  const [goalAdjustment, setGoalAdjustment] = useState('');
+
+  const handleGoalChange = (newValue: string) => {
+    setGoal(newValue);
+  };
+
+  const handleCategoryChange = (newValue: string) => {
+    setCategory(newValue);
+  };
+
+  const handleCadenceChange = (newValue: string) => {
+    setCadence(newValue);
+  };
+
+  const handleGoalAdjustmentChange = (newValue: string) => {
+    setGoalAdjustment(newValue);
+  };
+
+  const createGoal = () => {
+    if (!category || !cadence || !goal || !goalAdjustment) {
+      return;
+    }
+    const newGoal: IGoal = {
+      id: '55',
+      category: category as GoalCategory,
+      title: goal,
+      cadence: cadence as CadenceOptions,
+      minOrMax: goalAdjustment,
+      current: 0,
+    };
+    testGoals.unshift(newGoal);
+    navigation.goBack();
+  };
+
   return (
     <View style={styles.body}>
-      <View style={{ marginHorizontal: 20, marginTop: 20 }}>
-        <MyTextInput label="Goal"></MyTextInput>
+      <View style={{ marginHorizontal: 20 }}>
+        <MyTextInput
+          label="Goal"
+          onInputChange={handleGoalChange}
+        ></MyTextInput>
       </View>
-      <DropdownMenu
+      <MyMenu
         enum={GoalCategory}
-        initialValue={GoalCategory.health}
         title={'Category'}
+        onPres={handleCategoryChange}
       />
-      <DropdownMenu
+      <MyMenu
         enum={CadenceOptions}
-        initialValue={CadenceOptions.biweekly}
         title={'Cadence'}
+        onPres={handleCadenceChange}
       />
-      <MyButton />
+      <MyMenu
+        enum={GoalAdjustmentOptions}
+        title={'Goal Adjustment'}
+        onPres={handleGoalAdjustmentChange}
+      />
+      <MyButton
+        callback={createGoal}
+        isDisabled={!category || !cadence || !goal || !goalAdjustment}
+      />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
-    flex: 1,
+    flex: 0.9,
     justifyContent: 'space-evenly',
   },
 });

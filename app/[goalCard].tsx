@@ -1,12 +1,16 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { IGoal } from '../src/models/Goal';
+import { CadenceOptions, GoalCategory, IGoal } from '../src/models/Goal';
 import { Link } from 'expo-router';
 
 const Card = (goal: IGoal) => {
   return (
     <View style={styles.body}>
-      <Text style={styles.category}>{goal.category}</Text>
-      <Text style={styles.cadence}>{goal.cadence}</Text>
+      <Text style={styles.category}>
+        {GoalCategory[goal.category as keyof typeof GoalCategory]}
+      </Text>
+      <Text style={styles.cadence}>
+        {CadenceOptions[goal.cadence as keyof typeof CadenceOptions]}
+      </Text>
       <Text style={styles.title}>{goal.title}</Text>
       <Text style={styles.current}>{goal.current}</Text>
       <Link href={`/goals/${goal.id}`}>Go</Link>
@@ -24,16 +28,17 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffff',
   },
   category: {
-    flex: 1,
+    flex: 2,
   },
   cadence: {
-    flex: 1.5,
+    flex: 3,
   },
   title: {
     flex: 4,
+    marginLeft: 10,
   },
   current: {
-    flex: 0.5,
+    flex: 1,
   },
 });
 

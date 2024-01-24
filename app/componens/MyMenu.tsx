@@ -2,28 +2,31 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import { Menu, Text } from 'react-native-paper';
 import { GenericEnumPickerProps } from '../../src/models/Goal';
+import GlobalStyle from '../../src/utils/GlobalStyle';
 
-function DropdownMenu<T extends Record<string, string | number>>({
+function MyMenu<T extends Record<string, string | number>>({
   enum: enumObject,
   title,
+  onPres,
 }: GenericEnumPickerProps<T>) {
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState('');
-  const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const openMenu = () => setVisible(true);
   const closeMenu = () => setVisible(false);
 
   const selectItem = (key: string) => {
     setSelected(enumObject[key].toString());
-    setSelectedItem(key);
+    onPres(key);
     closeMenu();
   };
 
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={[styles.headerText, { color: 'rgb(120, 69, 172)' }]}>
+        <Text
+          style={[styles.headerText, { color: GlobalStyle.colors.primary }]}
+        >
           {title}
         </Text>
       </View>
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
     width: '60%',
   },
   title: {
-    paddingVertical: 10,
+    paddingVertical: 14,
     paddingHorizontal: 16,
     fontSize: 16,
     borderWidth: 1,
@@ -86,4 +89,4 @@ const styles = StyleSheet.create({
   menuItemTitle: {},
 });
 
-export default DropdownMenu;
+export default MyMenu;

@@ -14,6 +14,11 @@ export enum CadenceOptions {
   montly = 'Montly',
 }
 
+export enum GoalAdjustmentOptions {
+  min = 'Minimize The Occurance',
+  max = 'Maximize The Occurance',
+}
+
 export interface IGoal {
   id: string;
   category: GoalCategory;
@@ -25,6 +30,6 @@ export interface IGoal {
 
 export type GenericEnumPickerProps<T> = {
   enum: T;
-  initialValue: T[keyof T];
   title: string;
+  onPres: (value: string) => void;
 };

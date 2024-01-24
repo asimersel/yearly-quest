@@ -3,16 +3,14 @@ import { TextInput } from 'react-native-paper';
 
 type TextInputProps = {
   label: string;
+  onInputChange: (value: string) => void;
 };
 
-const MyTextInput: React.FC<TextInputProps> = ({ label }) => {
-  const [text, setText] = React.useState('');
-
+const MyTextInput: React.FC<TextInputProps> = ({ label, onInputChange }) => {
   return (
     <TextInput
       label={label}
-      value={text}
-      onChangeText={(text) => setText(text)}
+      onChangeText={(text) => onInputChange(text)}
       mode="outlined"
       style={{
         backgroundColor: 'white',

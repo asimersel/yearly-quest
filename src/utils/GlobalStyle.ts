@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 
 // Define your colors
 const colors = {
-  primary: 'rgb(30, 60, 90)',
+  // primary: 'rgb(30, 60, 90)',
   secondary: 'rgb(240, 150, 60)',
   background: 'rgb(150, 200, 150)',
   accent: 'rgb(60, 120, 60)',
@@ -11,6 +11,9 @@ const colors = {
   // Gradient colors
   gradientStart: 'rgb(58, 219, 253)',
   gradientEnd: 'rgb(0, 130, 211)',
+
+  // default until we decided
+  primary: 'rgb(120, 69, 172)',
 };
 
 // Define your styles

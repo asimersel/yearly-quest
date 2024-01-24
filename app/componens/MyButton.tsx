@@ -1,12 +1,18 @@
 import { Button } from 'react-native-paper';
 
-const MyButton = () => {
+interface ButtonProps {
+  callback: () => void;
+  isDisabled: boolean;
+}
+
+const MyButton: React.FC<ButtonProps> = ({ callback, isDisabled }) => {
   return (
     <Button
       icon="plus-circle"
       mode="contained"
-      onPress={() => console.log('Pressed')}
+      onPress={() => callback()}
       style={{ margin: 10 }}
+      disabled={isDisabled}
     >
       Create
     </Button>

@@ -24,7 +24,8 @@ const RootLayout = () => {
         <Stack.Screen
           name="index"
           options={{
-            headerTitle: 'Home',
+            headerTitle: 'Dashboard',
+            headerTintColor: GlobalStyle.colors.primary,
             headerRight: () => <CreateButton />,
           }}
         ></Stack.Screen>
@@ -38,6 +39,7 @@ const RootLayout = () => {
           name="createGoal"
           options={{
             headerTitle: 'Add Goal',
+            headerTintColor: GlobalStyle.colors.primary,
           }}
         ></Stack.Screen>
       </Stack>
@@ -49,10 +51,11 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   button: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: GlobalStyle.colors.gradientStart,
+    width: 34,
+    height: 34,
+    borderRadius: 17,
+    // backgroundColor: GlobalStyle.colors.gradientStart,
+    backgroundColor: GlobalStyle.colors.primary,
     justifyContent: 'center',
     alignItems: 'center',
   },
